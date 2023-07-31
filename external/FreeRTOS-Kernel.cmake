@@ -20,27 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.19)
+FILE(GLOB FreeRTOS_C_SRC ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/*.c)
 
-set(PICO_SDK_PATH "${CMAKE_CURRENT_LIST_DIR}/external/pico-sdk")
+add_library(FreeRTOS STATIC
+    ${FreeRTOS_C_SRC}
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/MemMang/heap_4.c
+)
 
-# initialize the SDK based on PICO_SDK_PATH
-include(pico_sdk_import.cmake)
-
-project(template)
-
-# initialize the Pico SDK
-pico_sdk_init()
-
-set(TEMPLATE_C_SRC "")
-set(TEMPLATE_CXX_SRC "")
-
-include("${CMAKE_CURRENT_LIST_DIR}/src/CMakeLists.txt")
-
-add_executable(template "${TEMPLATE_C_SRC};${TEMPLATE_CXX_SRC}")
-
-include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS-Kernel.cmake)
-
-target_link_libraries(template pico_stdlib hardware_gpio FreeRTOS)
-
-pico_add_extra_outputs(template)
+target_include_directories(FreeRTOS PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/include
+    include/
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+)
