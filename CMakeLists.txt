@@ -42,6 +42,30 @@ add_executable(template "${TEMPLATE_C_SRC};${TEMPLATE_CXX_SRC}")
 include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS-Kernel.cmake)
 
 target_link_libraries(template
+    hardware_adc 
+    hardware_base
+    hardware_claim
+    hardware_clocks
+    hardware_divider
+    hardware_dma
+    hardware_exception
+    hardware_flash
+    hardware_gpio
+    hardware_i2c
+    hardware_interp
+    hardware_irq
+    hardware_gpio
+    hardware_pll
+    hardware_pwm
+    hardware_resets
+    hardware_rtc
+    hardware_spi
+    hardware_sync
+    hardware_timer
+    hardware_uart
+    hardware_vreg
+    hardware_watchdog
+    hardware_xosc
     pico_stdlib
     FreeRTOS)
 
