@@ -41,6 +41,8 @@ add_executable(template "${TEMPLATE_C_SRC};${TEMPLATE_CXX_SRC}")
 
 include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS-Kernel.cmake)
 
-target_link_libraries(template pico_stdlib FreeRTOS)
+target_link_libraries(template
+    pico_stdlib
+    FreeRTOS)
 
 pico_add_extra_outputs(template)
