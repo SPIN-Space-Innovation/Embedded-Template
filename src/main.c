@@ -35,8 +35,10 @@
 
 int main()
 {
+    // Initialize the stdio library
     stdio_init_all();
 
+    // Start background tasks
     vTaskStartScheduler();
 
     while (true);
