@@ -74,6 +74,22 @@ target_link_libraries(template
     pico_time
     pico_unique_id
     pico_util
+    pico_base
+    pico_binary_info
+    pico_bit_ops
+    pico_bootrom
+    pico_bootsel_via_double_reset
+    pico_cxx_options
+    pico_divider
+    pico_double
+    pico_float
+    pico_int64_ops
+    pico_malloc
+    pico_mem_ops
+    pico_platform
+    pico_printf
+    pico_runtime
+    pico_stdio
     FreeRTOS)
 
 pico_add_extra_outputs(template)
