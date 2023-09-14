@@ -22,13 +22,16 @@
  * SOFTWARE.
  */
 
+#include "main.h"
+
 #include <stdbool.h>
 
-#include "pico/stdlib.h"
+#include <pico/stdlib.h>
 
-#include "FreeRTOS.h"
+#include <FreeRTOS.h>
+#include <task.h>
+
 #include "FreeRTOSConfig.h"
-#include "task.h"
 
 int main()
 {
