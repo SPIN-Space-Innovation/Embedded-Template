@@ -33,10 +33,31 @@
 
 #include "FreeRTOSConfig.h"
 
+void vBlinkTask()
+{
+    while(true)
+    {
+        gpio_put(PICO_DEFAULT_LED_PIN, 1);
+        vTaskDelay(250);
+
+        gpio_put(PICO_DEFAULT_LED_PIN, 0);
+        vTaskDelay(250);
+    }
+}
+
 int main()
 {
     // Initialize the stdio library
     stdio_init_all();
+
+    // Initialize the GPIO
+    gpio_init(PICO_DEFAULT_LED_PIN);
+
+    // Set the LED pin as an output device
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    // Create background blink task
+    BaseType_t blinkTask = xTaskCreate(vBlinkTask, "Blink Task", 128, NULL, 1, NULL);
 
     // Start background tasks
     vTaskStartScheduler();
