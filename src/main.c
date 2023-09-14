@@ -25,6 +25,7 @@
 #include "main.h"
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #include <pico/stdlib.h>
 
@@ -45,6 +46,14 @@ void vBlinkTask()
     }
 }
 
+void vHelloWorldTask()
+{
+    while(true)
+    {
+        printf("Hello world\n");
+        vTaskDelay(1000);
+    }
+}
 int main()
 {
     // Initialize the stdio library
@@ -58,6 +67,9 @@ int main()
 
     // Create background blink task
     BaseType_t blinkTask = xTaskCreate(vBlinkTask, "Blink Task", 128, NULL, 1, NULL);
+
+    // Create background hello world task
+    BaseType_t helloWorldTask = xTaskCreate(vHelloWorldTask, "Hello World Task", 128, NULL, 1, NULL);
 
     // Start background tasks
     vTaskStartScheduler();
