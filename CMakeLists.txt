@@ -37,6 +37,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/src/CMakeLists.txt")
 add_executable(template ${SRC})
 
 include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS-Kernel.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/external/Embedded-Template-Library.cmake)
 
 target_link_libraries(template
     hardware_adc 
@@ -87,6 +88,7 @@ target_link_libraries(template
     pico_printf
     pico_runtime
     pico_stdio
+    etl::etl
     FreeRTOS)
 
 pico_add_extra_outputs(template)
