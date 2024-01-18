@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2023 SPIN - Space Innovation
+# Copyright (c) 2024 SPIN - Space Innovation
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -32,12 +32,9 @@ project(template)
 # initialize the Pico SDK
 pico_sdk_init()
 
-set(TEMPLATE_C_SRC "")
-set(TEMPLATE_CXX_SRC "")
-
 include("${CMAKE_CURRENT_LIST_DIR}/src/CMakeLists.txt")
 
-add_executable(template "${TEMPLATE_C_SRC};${TEMPLATE_CXX_SRC}")
+add_executable(template ${SRC})
 
 include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS-Kernel.cmake)
 
