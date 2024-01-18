@@ -34,7 +34,7 @@
 
 #include "FreeRTOSConfig.h"
 
-void vBlinkTask()
+void vBlinkTask(void *)
 {
     while(true)
     {
@@ -46,7 +46,7 @@ void vBlinkTask()
     }
 }
 
-void vHelloWorldTask()
+void vHelloWorldTask(void *)
 {
     while(true)
     {
