@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2023 SPIN - Space Innovation
+# Copyright (c) 2024 SPIN - Space Innovation
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FILE(GLOB FreeRTOS_C_SRC ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/*.c)
+Include(FetchContent)
+
+FetchContent_Declare(
+    FreeRTOS-Kernel
+    GIT_REPOSITORY https://github.com/FreeRTOS/FreeRTOS-Kernel
+    GIT_TAG V11.0.1
+    GIT_SUBMODULES_RECURSE TRUE
+)
+
+FetchContent_Populate(FreeRTOS-Kernel)
+
+FILE(GLOB FreeRTOS_C_SRC ${freertos-kernel_SOURCE_DIR}/*.c)
 
 add_library(FreeRTOS STATIC
     ${FreeRTOS_C_SRC}
-    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c
-    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/MemMang/heap_4.c
+    ${freertos-kernel_SOURCE_DIR}/portable/GCC/ARM_CM0/port.c
+    ${freertos-kernel_SOURCE_DIR}/portable/MemMang/heap_4.c
 )
 
 target_include_directories(FreeRTOS PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/include
+    ${freertos-kernel_SOURCE_DIR}/include
     include/
-    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+    ${freertos-kernel_SOURCE_DIR}/portable/GCC/ARM_CM0
 )
