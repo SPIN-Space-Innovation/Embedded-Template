@@ -23,18 +23,18 @@
 Include(FetchContent)
 
 FetchContent_Declare(
-    FreeRTOS-Kernel
+    freertos-kernel
     GIT_REPOSITORY https://github.com/FreeRTOS/FreeRTOS-Kernel
     GIT_TAG V11.0.1
     GIT_SUBMODULES_RECURSE TRUE
 )
 
-FetchContent_Populate(FreeRTOS-Kernel)
+FetchContent_Populate(freertos-kernel)
 
-FILE(GLOB FreeRTOS_C_SRC ${freertos-kernel_SOURCE_DIR}/*.c)
+FILE(GLOB freertos-kernel_SRC ${freertos-kernel_SOURCE_DIR}/*.c)
 
 add_library(FreeRTOS STATIC
-    ${FreeRTOS_C_SRC}
+    ${freertos-kernel_SRC}
     ${freertos-kernel_SOURCE_DIR}/portable/GCC/ARM_CM0/port.c
     ${freertos-kernel_SOURCE_DIR}/portable/MemMang/heap_4.c
 )
