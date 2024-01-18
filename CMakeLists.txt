@@ -22,7 +22,7 @@
 
 cmake_minimum_required(VERSION 3.19)
 
-set(PICO_SDK_PATH "${CMAKE_CURRENT_LIST_DIR}/external/pico-sdk")
+include(${CMAKE_CURRENT_LIST_DIR}/external/pico-sdk.cmake)
 
 # initialize the SDK based on PICO_SDK_PATH
 include(pico_sdk_import.cmake)
