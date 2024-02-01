@@ -93,5 +93,5 @@ target_link_libraries(template
 
 pico_add_extra_outputs(template)
 
-pico_enable_stdio_usb(template 1)
-pico_enable_stdio_uart(template 0)
+pico_enable_stdio_usb(template 0)
+pico_enable_stdio_uart(template 1)
