@@ -40,9 +40,9 @@ pico_sdk_init()
 
 include("${CMAKE_CURRENT_LIST_DIR}/src/CMakeLists.txt")
 
-add_executable(template ${SRC})
+add_executable(template ${${PROJECT_NAME}_SRC})
 
-include(${CMAKE_CURRENT_LIST_DIR}/external/freertos-kernel.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/external/FreeRTOS.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/external/etl.cmake)
 
 target_link_libraries(template
